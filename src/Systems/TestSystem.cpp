@@ -10,7 +10,10 @@ void TestSystem::Start()
 
 void TestSystem::Update() //To be removed later
 {
-	std::cout << "1: System Updated" << std::endl;
+	while (!Killed) 
+	{
+		std::cout << "1: System Updated" << std::endl;
+	}
 }
 
 void TestSystem::End()
@@ -25,7 +28,10 @@ void TestSystem2::Start()
 
 void TestSystem2::Update() //To be removed later
 {
-	std::cout << "2: System Updated" << std::endl;
+	while (!Killed)
+	{
+		std::cout << "2: System Updated" << std::endl;
+	}
 }
 
 void TestSystem2::End()

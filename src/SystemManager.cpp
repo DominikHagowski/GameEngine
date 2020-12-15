@@ -1,24 +1,25 @@
 #include <list>
 #include <algorithm>
+#include <thread>
 
 #include "SystemManager.h"
 
+void StartSystem(System* Target)
+{
+	Target->Start();
+	Target->Update();
+	Target->End();
+}
 
 void SystemManager::AddSystem(System* Target)
 {
+	Target->RunningThread = new std::thread(StartSystem, Target);
 	Systems.insert(Systems.end(), Target);
-	Target->Start();
 }
 	
 void SystemManager::RemoveSystem(System* Target)
 {
-	Systems.remove(Target);
-}
-
-void SystemManager::Update() //To be removed later
-{
-	for each (System* sys in Systems)
-	{
-		sys->Update();
-	}
+	Target->Killed = true;
+	Target->RunningThread->join();
+	Systems.remove(Target); 
 }

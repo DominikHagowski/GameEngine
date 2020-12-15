@@ -1,9 +1,14 @@
 #include <list>
+#include <thread>
 
 class System
 {
 public:
 	unsigned int ID;
+
+	bool Killed = false;
+
+	std::thread* RunningThread;
 
 	virtual void Start() = 0;
 
@@ -18,7 +23,6 @@ private:
 	std::list<System*> Systems;
 
 public:
-	void Update();
 	void RemoveSystem(System* Target);
 	void AddSystem(System* Target);
 };

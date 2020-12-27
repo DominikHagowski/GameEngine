@@ -8,7 +8,7 @@ void TestSystem::Start()
 	std::cout << "1: System Created" << std::endl;
 }
 
-void TestSystem::Update() //To be removed later
+void TestSystem::Update()
 {
 	while (!Killed) 
 	{
@@ -26,7 +26,7 @@ void TestSystem2::Start()
 	std::cout << "2: System Created" << std::endl;
 }
 
-void TestSystem2::Update() //To be removed later
+void TestSystem2::Update()
 {
 	while (!Killed)
 	{

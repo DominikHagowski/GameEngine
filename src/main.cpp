@@ -24,6 +24,25 @@ int main()
 	Manager.AddSystem(TestSys2);
 	Manager.AddSystem(GraphicsSys);
 
+	std::this_thread::sleep_for(0s);
+
+	Mesh* TestMesh = new Mesh;
+
+	float vertices[] = {
+	-0.5f, -0.5f, 0.0f,
+	 0.5f, -0.5f, 0.0f,
+	 0.0f,  0.5f, 0.0f
+	};
+
+	TestMesh->Verts = vertices;
+	TestMesh->VertCount = 9;
+
+	Command TestCommand;
+
+	TestCommand.CommandT = Command_MeshLoad;
+	TestCommand.Data = TestMesh;
+
+	((GraphicsSystem*)GraphicsSys)->CommandQueue.push(TestCommand);
 	std::this_thread::sleep_for(15s);
 
 	Manager.RemoveSystem(TestSys1);
